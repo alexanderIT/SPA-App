@@ -8,6 +8,9 @@ namespace SPA.DAL.Objects
 {
     public class SPADBContext : DbContext
     {
+
+        private object lockObj = new object();
+
         public SPADBContext()
             : base("DefaultConnection")
         {
@@ -20,7 +23,10 @@ namespace SPA.DAL.Objects
 
         public new IDbSet<T> Set<T>() where T : class
         {
-            return base.Set<T>();
+            lock (lockObj)
+            {
+                return base.Set<T>();
+            }            
         }
     }
 }
