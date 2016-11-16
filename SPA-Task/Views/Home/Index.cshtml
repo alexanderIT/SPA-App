@@ -1,0 +1,27 @@
+﻿<body data-ng-app="APIModule">
+    <div ng-controller="APIController">
+        <div class="table-responsive">
+            <table class="table striped">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>MatchType</th>
+                    <th>StartDate</th>
+                </tr>
+                <tbody data-ng-repeat="match in matches.data">
+                    <tr>
+                        <td>{{match.ID}}</td>
+                        <td>{{match.Name}}</td>
+                        <td>{{match.MatchType}}</td>
+                        <td>{{match.StartDate}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/angular-route.js"></script>
+<script src="~/Scripts/module.js"></script>
+
+
