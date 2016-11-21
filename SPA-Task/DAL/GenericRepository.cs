@@ -9,6 +9,9 @@ namespace SPA.DAL
 {
     public class GenericRepository<T> : IRepository<T> where T : class
     {
+        protected IDbSet<T> DbSet { get; set; }
+        protected DbContext Context { get; set; }
+
         public GenericRepository(DbContext context)
         {
             if (context == null)
@@ -18,43 +21,33 @@ namespace SPA.DAL
 
             this.Context = context;
             this.DbSet = this.Context.Set<T>();
-        }
-        private readonly object _lockObj =new object();
-
-        protected IDbSet<T> DbSet { get; set; }
-
-        protected DbContext Context { get; set; }
+        }       
 
         public virtual IQueryable<T> All()
         {
-            lock (_lockObj)
-            {
-                return this.DbSet.AsQueryable();
-            }            
+
+            return this.DbSet.AsQueryable();
+
         }
 
         public virtual T GetById(int id)
         {
-            lock (_lockObj)
-            {
-                return this.DbSet.Find(id);
-            }            
+            return this.DbSet.Find(id);
+
         }
 
         public virtual void Add(T entity)
         {
-            lock (_lockObj)
+
+            DbEntityEntry entry = this.Context.Entry(entity);
+            if (entry.State != EntityState.Detached)
             {
-                DbEntityEntry entry = this.Context.Entry(entity);
-                if (entry.State != EntityState.Detached)
-                {
-                    entry.State = EntityState.Added;
-                }
-                else
-                {
-                    this.DbSet.Add(entity);
-                }
-            }          
+                entry.State = EntityState.Added;
+            }
+            else
+            {
+                this.DbSet.Add(entity);
+            }
         }
 
         public virtual void Update(T entity)
@@ -94,30 +87,19 @@ namespace SPA.DAL
 
         public virtual void Detach(T entity)
         {
-            lock (_lockObj)
-            {
-                DbEntityEntry entry = this.Context.Entry(entity);
+            DbEntityEntry entry = this.Context.Entry(entity);
 
-                entry.State = EntityState.Detached;
-            }
-           
+            entry.State = EntityState.Detached;
         }
 
         public int SaveChanges()
         {
-            lock (_lockObj)
-            {
-                return this.Context.SaveChanges();
-            }
-            
+            return this.Context.SaveChanges();
         }
 
         public void Dispose()
         {
-            lock (_lockObj)
-            {
-                this.Context.Dispose();
-            }            
+            this.Context.Dispose();
         }
     }
 }

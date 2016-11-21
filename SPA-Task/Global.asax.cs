@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using SPA.Utils;
+using SPA_Task.DAL;
 
 namespace SPA_Task
 {
@@ -19,7 +20,7 @@ namespace SPA_Task
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            InsertDataIntoDb.StartGetFromServiceCycle();
+            new InsertDataIntoDb(new UowData()).StartGetFromServiceCycle();
         }
     }
 }

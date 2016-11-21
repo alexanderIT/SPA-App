@@ -12,22 +12,17 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Xml.Serialization;
 using SPA.DAL.Objects;
-using SPA.Manger;
+using SPA_Task.DAL;
 using SPA_Task.Utils;
 
 namespace SPA.Controllers
 {    
     public class EngineController : BaseController
-    {        
+    {
         // GET api/engine
-        public IEnumerable<Match> Get()
+        public IEnumerable<Match> GetAllMatches()
         {
-            if (!Manager.IsDbReady)
-            {
-                return Enumerable.Empty<Match>();
-            }
-
-            return GetDataFromDB.GetMatchesFromDb();
+            return new GetDataFromDB(new UowData()).GetMatchesFromDb();
         }
     }
 }

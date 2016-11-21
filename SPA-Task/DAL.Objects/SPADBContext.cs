@@ -9,12 +9,11 @@ namespace SPA.DAL.Objects
     public class SPADBContext : DbContext
     {
 
-        private object lockObj = new object();
-
         public SPADBContext()
             : base("DefaultConnection")
         {
         }
+
         public virtual DbSet<Odd> Odds { get; set; }
         public virtual DbSet<Match> Matches { get; set; }
         public virtual DbSet<Event> Events { get; set; }
@@ -23,10 +22,7 @@ namespace SPA.DAL.Objects
 
         public new IDbSet<T> Set<T>() where T : class
         {
-            lock (lockObj)
-            {
-                return base.Set<T>();
-            }            
+            return base.Set<T>();
         }
     }
 }

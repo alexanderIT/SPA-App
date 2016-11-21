@@ -12,7 +12,6 @@ namespace SPA.DAL.Objects
 
         [XmlAttribute(AttributeName = "Name")]
         public string Name { get; set; }
-
         
         public int ID { get; set; }
     }
