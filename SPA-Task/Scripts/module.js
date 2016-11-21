@@ -17,7 +17,7 @@ app.controller('APIController', ['$scope','$timeout', 'EngineService', function 
             var servCall = EngineService.getMatches();
             servCall.then(function (data) {
                 $scope.matches = data;
-                $timeout(tick, 50000);
+                $timeout(tick, 60000);
             }, function (error) {
                 $log.error('Oops! Something went wrong while fetching the data.');
             });
