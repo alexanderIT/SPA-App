@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
 
 namespace SPA.DAL.Objects
@@ -10,7 +11,7 @@ namespace SPA.DAL.Objects
         public int ID { get; set; }
 
         [XmlElement(ElementName = "Sport")]
-        public Sport Sport { get; set; }
+        public List<Sport> Sports { get; set; }
 
         [XmlAttribute(AttributeName = "CreateDate")]
         public string CreateDate { get; set; }
