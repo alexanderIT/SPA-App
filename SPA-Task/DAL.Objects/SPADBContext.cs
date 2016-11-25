@@ -24,5 +24,10 @@ namespace SPA.DAL.Objects
         {
             return base.Set<T>();
         }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    Database.SetInitializer<SPADBContext>(null);
+        //    base.OnModelCreating(modelBuilder);
+        //}
     }
 }

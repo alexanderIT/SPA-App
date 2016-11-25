@@ -91,15 +91,5 @@ namespace SPA.DAL
 
             entry.State = EntityState.Detached;
         }
-
-        public int SaveChanges()
-        {
-            return this.Context.SaveChanges();
-        }
-
-        public void Dispose()
-        {
-            this.Context.Dispose();
-        }
     }
 }

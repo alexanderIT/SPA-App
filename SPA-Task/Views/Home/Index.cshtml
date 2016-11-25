@@ -1,19 +1,25 @@
 ﻿<body data-ng-app="APIModule">
     <div ng-controller="APIController">
         <div class="table-responsive">
-            <table class="table striped">
+            <table class="table striped" border="1">
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
+                    <th>Event</th>
+                    <th>Match</th>
+               </tr>
+                <tr>
+                    <th>EventName</th>
+                    <th>MatchID</th>
+                    <th>MatchName</th>
                     <th>MatchType</th>
-                    <th>StartDate</th>
+                    <th>MatchStartDate</th>
                 </tr>
                 <tbody data-ng-repeat="match in matches.data">
                     <tr>
-                        <td>{{match.ID}}</td>
-                        <td>{{match.Name}}</td>
-                        <td>{{match.MatchType}}</td>
-                        <td>{{match.StartDate}}</td>
+                        <td>{{match.Event}}</td>
+                        <td>{{match.Match.ID}}</td>
+                        <td>{{match.Match.Name}}</td>
+                        <td>{{match.Match.MatchType}}</td>
+                        <td>{{match.Match.StartDate}}</td>
                     </tr>
                 </tbody>
             </table>

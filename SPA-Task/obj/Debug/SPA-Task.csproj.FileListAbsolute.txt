@@ -365,3 +365,10 @@ C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Microsoft.
 C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Microsoft.Practices.ServiceLocation.xml
 C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Microsoft.Practices.Unity.xml
 C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Ninject.dll
+C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Ninject.xml
+C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Ninject.Web.Common.dll
+C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Ninject.Web.Mvc.dll
+C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\WebActivatorEx.dll
+C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Ninject.Web.Common.xml
+C:\Users\Alexander\Desktop\SPA-App-master\SPA-App-master\SPA-Task\bin\Ninject.Web.Mvc.xml

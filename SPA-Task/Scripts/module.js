@@ -5,12 +5,12 @@
 
 app.service("EngineService", ['$http', function ($http) {
     this.getMatches = function () {
-        var result = $http.get("api/Engine");
-        return result;
+        var matches = $http.get("api/Matches");
+        return matches;        
     }
 }]);
 
-app.controller('APIController', ['$scope','$timeout', 'EngineService', function ($scope, $timeout, EngineService) {
+app.controller('APIController', ['$scope', '$timeout', 'EngineService', function ($scope, $timeout, EngineService) {
     getAll();
     function getAll() {
         (function tick() {
@@ -21,6 +21,7 @@ app.controller('APIController', ['$scope','$timeout', 'EngineService', function 
             }, function (error) {
                 $log.error('Oops! Something went wrong while fetching the data.');
             });
+
         })();       
     }
 }])

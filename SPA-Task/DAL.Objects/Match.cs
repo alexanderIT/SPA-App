@@ -20,5 +20,7 @@ namespace SPA.DAL.Objects
 
         [XmlElement(ElementName = "Bet")]
         public List<Bet> Bets { get; set; }
+
+        public int EventID { get; set; }
     }
 }

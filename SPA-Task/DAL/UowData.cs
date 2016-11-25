@@ -10,6 +10,8 @@ namespace SPA_Task.DAL
 {
     public class UowData : IUowData
     {
+        private object lockObj = new object();
+
         private readonly SPADBContext context;
 
         private readonly Dictionary<Type, object> repositories = new Dictionary<Type, object>();
@@ -21,7 +23,7 @@ namespace SPA_Task.DAL
 
         public UowData(SPADBContext context)
         {
-            this.context = context;
+            this.context = context;            
         }
 
         public bool IsDbReady()

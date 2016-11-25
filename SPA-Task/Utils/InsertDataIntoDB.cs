@@ -16,23 +16,17 @@ namespace SPA.Utils
 {
     public class InsertDataIntoDb
     {
-        private static Timer _timer;
         private const string Url = "http://vitalbet.net/sportxml";
         private static WebClient _client;
-        protected IUowData Data { get; set; }
+        public static IUowData Data { get; set; }
 
-        public InsertDataIntoDb(IUowData data)
+        public InsertDataIntoDb()
         {
-            Data = data;
+            Data = new UowData();
             _client = new WebClient();
         }
 
-        public void StartGetFromServiceCycle()
-        {
-            _timer = new Timer(_ => GetFromServiceAndInsertToDb(), null, 0, 1000 * 60); //every 60 seconds
-        }
-
-        private void GetFromServiceAndInsertToDb()
+        public void GetFromServiceAndInsertToDb()
         {
             using (_client)
             {
@@ -41,10 +35,11 @@ namespace SPA.Utils
                 using (var stringReader = new StringReader(result))
                 {
                     XmlSports xmlSports = (XmlSports) serializer.Deserialize(stringReader);
-                    Data.XmlSports.Add(xmlSports);
-                    Data.XmlSports.SaveChanges();
-                }
-            }
+                    var model = xmlSports.Sports.Where(x => x.Events.Count() < 14).FirstOrDefault();
+                    Data.Sport.Add(model);
+                    Data.SaveChanges();
+                }                
+            }            
         }
     }
 }
